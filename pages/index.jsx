@@ -26,6 +26,8 @@ export default function Home({ countries, primaryContact, otherContacts }) {
   const [navElementSelected, setNavElementSelected] =
     useState("Personal Details"); // keeps the selected nav
 
+  const [newPasasengerAddedMessage, setNewPassengerAddedMessage] = useState("");
+
   const theme = useTheme(); // used for theming
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -79,6 +81,7 @@ export default function Home({ countries, primaryContact, otherContacts }) {
 
   const handleClosePassenger = () => {
     setOpenAddPassengerDialog(false);
+    setNewPassengerAddedMessage("");
   };
 
   const navElements = [
@@ -183,6 +186,10 @@ export default function Home({ countries, primaryContact, otherContacts }) {
                 openAddPassengerDialog={openAddPassengerDialog}
                 handleClosePassenger={handleClosePassenger}
                 primaryContactId={primaryContact?.id}
+                setPassengers={setPassengers}
+                passengers={passengers}
+                newPasasengerAddedMessage={newPasasengerAddedMessage}
+                setNewPassengerAddedMessage={setNewPassengerAddedMessage}
               />
             </Box>
 

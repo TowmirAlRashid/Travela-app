@@ -2,6 +2,7 @@ import {
   Autocomplete,
   Box,
   Button,
+  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -10,14 +11,20 @@ import {
   Typography,
 } from "@mui/material";
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 const AddPassenger = ({
   openAddPassengerDialog,
   handleClosePassenger,
   primaryContactId,
+  setPassengers,
+  passengers,
+  newPasasengerAddedMessage,
+  setNewPassengerAddedMessage,
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     control,
     handleSubmit,
@@ -33,6 +40,8 @@ const AddPassenger = ({
   });
 
   const handleAddPassenger = async (data) => {
+    setIsLoading(true);
+
     const submitData = {
       First_Name: data?.First_Name,
       Last_Name: data?.Last_Name,
@@ -52,11 +61,24 @@ const AddPassenger = ({
         recordObject
       );
       console.log(result);
+
+      if (result.status === 200) {
+        // setPassengers([
+        //   ...passengers,
+        //   {
+        //     ...submitData,
+        //     Full_Name: data?.First_Name + " " + data?.Last_Name,
+        //   },
+        // ]);
+
+        setMessage("New Passenger added! Please Refresh the page.");
+      }
     } catch (error) {
       console.log(error);
     }
 
     // reset();
+    setIsLoading(false);
     handleClosePassenger();
   };
 
@@ -153,11 +175,24 @@ const AddPassenger = ({
               );
             }}
           />
+
+          <Typography>{newPasasengerAddedMessage}</Typography>
         </DialogContent>
 
-        <DialogActions>
+        <DialogActions sx={{ mr: "1rem" }}>
           <Button onClick={handleClosePassenger}>Close</Button>
-          <Button type="submit">Add Passenger</Button>
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{
+              backgroundColor: "red",
+              color: "white",
+              "&:hover": { backgroundColor: "red" },
+              width: "10rem",
+            }}
+          >
+            {!isLoading ? "Add Passenger" : <CircularProgress size={24} />}
+          </Button>
         </DialogActions>
       </Box>
     </Dialog>
