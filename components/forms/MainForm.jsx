@@ -2351,10 +2351,20 @@ const MainForm = ({
                             }}
                             sx={{
                               "& .MuiInputBase-root": {
-                                padding: "6px 14px",
+                                padding: "8px 14px",
                               },
-                              width: "100%",
-                              mb: "1.2rem",
+                              width: {
+                                lg: "49%",
+                                md: "49%",
+                                sm: "100%",
+                                xs: "100%",
+                              },
+                              mb: {
+                                lg: 0,
+                                md: 0,
+                                sm: "1.2rem",
+                                xs: "1.2rem",
+                              },
                             }}
                             renderInput={(params) => (
                               <TextField {...params} label="Occasion" />
@@ -2363,8 +2373,6 @@ const MainForm = ({
                         );
                       }}
                     />
-
-                    {/* {JSON.stringify(`Occasion_${index + 1}_Date`)} */}
 
                     {/* <Controller
                       name={`Occasion_${index + 1}_Date`}
@@ -2415,6 +2423,58 @@ const MainForm = ({
                         );
                       }}
                     /> */}
+
+                    <Controller
+                      name={`Occasion_${index + 1}_Date`}
+                      control={control}
+                      defaultValue={dayjs(
+                        `${occasion?.[`Occasion_${index + 1}_Date`]}`
+                      )}
+                      render={({ field: { ref, ...field } }) => {
+                        const selectedDate = dayjs(field.value).format(
+                          "YYYY-MM-DD"
+                        );
+                        return (
+                          <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DatePicker
+                              label="Occasion Date"
+                              {...field}
+                              value={dayjs(selectedDate)}
+                              onChange={(newValue) => {
+                                const formattedDate =
+                                  dayjs(newValue).format("YYYY-MM-DD");
+                                field.onChange(formattedDate);
+                              }}
+                              sx={{
+                                width: {
+                                  lg: "49%",
+                                  md: "49%",
+                                  sm: "100%",
+                                  xs: "100%",
+                                },
+                              }}
+                              renderInput={(params) => (
+                                <TextField
+                                  id="Occasion_Date"
+                                  variant="outlined"
+                                  type="date"
+                                  sx={{
+                                    "& .MuiInputBase-input": {
+                                      padding: "14px 10px",
+                                    },
+                                  }}
+                                  {...params}
+                                />
+                              )}
+                              dayPickerProps={{
+                                isBeforeDay: (date) =>
+                                  dayjs(date).isBefore(selectedDate),
+                              }}
+                            />
+                          </LocalizationProvider>
+                        );
+                      }}
+                    />
                   </Box>
                 </Box>
               </Box>
