@@ -771,7 +771,7 @@ const MainForm = ({
                   <Controller
                     name="no_email"
                     control={control}
-                    // defaultValue={passengerSelected?.}
+                    defaultValue={passengerSelected?.Contact_has_no_email}
                     render={({ field: props }) => (
                       <Checkbox
                         {...props}
@@ -834,24 +834,6 @@ const MainForm = ({
                   )}
                 />
               </Box>
-
-              {/* <FormControlLabel
-                control={
-                  <Controller
-                    name="send_text_for_trip"
-                    control={control}
-                    // defaultValue={passengerSelected?.}
-                    render={({ field: props }) => (
-                      <Checkbox
-                        {...props}
-                        checked={props.value}
-                        onChange={(e) => props.onChange(e.target.checked)}
-                      />
-                    )}
-                  />
-                }
-                label="Send Text Messages with important information for my trip."
-              /> */}
             </Box>
           </Box>
 
