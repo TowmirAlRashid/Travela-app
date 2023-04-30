@@ -396,9 +396,14 @@ const MainForm = ({
                       }}
                       sx={{
                         "& .MuiInputBase-root": {
-                          padding: "6px 14px",
-                          mb: "1rem",
-                          mt: "0.3rem",
+                          padding: "8px 14px",
+                          mb: {
+                            sm: "1rem",
+                            xs: "1rem",
+                            lg: 0,
+                            md: 0,
+                          },
+                          // mt: "0.3rem",
                         },
                         width: {
                           lg: "46%",
@@ -415,22 +420,30 @@ const MainForm = ({
                 }}
               />
 
-              {/* <Controller
+              <Controller
                 name="Date_of_Birth"
                 control={control}
                 defaultValue={dayjs(passengerSelected?.Date_of_Birth)}
                 render={({ field: { ref, ...field } }) => {
+                  const selectedDate = dayjs(field.value).format("YYYY-MM-DD");
                   return (
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePicker
-                        inputFormat="YYYY-MM-DD"
                         label="Date of Birth"
                         {...field}
-                        defaultValue={dayjs(passengerSelected?.Date_of_Birth)}
+                        value={dayjs(selectedDate)}
                         onChange={(newValue) => {
                           const formattedDate =
                             dayjs(newValue).format("YYYY-MM-DD");
                           field.onChange(formattedDate);
+                        }}
+                        sx={{
+                          width: {
+                            lg: "46%",
+                            md: "46%",
+                            sm: "100%",
+                            xs: "100%",
+                          },
                         }}
                         renderInput={(params) => (
                           <TextField
@@ -439,27 +452,21 @@ const MainForm = ({
                             type="date"
                             sx={{
                               "& .MuiInputBase-input": {
-                                padding: "14px 14px",
-                              },
-                              width: {
-                                lg: "46%",
-                                md: "46%",
-                                sm: "100%",
-                                xs: "100%",
-                              },
-                              mt: {
-                                lg: "-0.7rem",
-                                md: "-0.7rem",
+                                padding: "14px 10px",
                               },
                             }}
                             {...params}
                           />
                         )}
+                        dayPickerProps={{
+                          isBeforeDay: (date) =>
+                            dayjs(date).isBefore(selectedDate),
+                        }}
                       />
                     </LocalizationProvider>
                   );
                 }}
-              /> */}
+              />
             </Box>
 
             <Box
