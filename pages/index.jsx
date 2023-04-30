@@ -31,14 +31,30 @@ export default function Home({ countries, primaryContact, otherContacts }) {
   const theme = useTheme(); // used for theming
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const handleDeletePassenger = (passenger) => {
+  const handleDeletePassenger = async (passenger) => {
     // deletes a passenger if priority not high
-    if (passenger?.Full_Name !== primaryContact?.Full_Name) {
-      setPassengers(
-        passengers?.filter(
-          (singlePassenger) => singlePassenger?.name !== passenger?.name
-        )
-      );
+    try {
+      if (passenger?.Full_Name !== primaryContact?.Full_Name) {
+        const recordObject = {
+          id: passengerSelected?.id,
+          moduleName: "Contacts",
+        };
+
+        const result = await axios.post(
+          "/api/zoho/deletePassenger",
+          recordObject
+        );
+
+        if (result?.data?.status === 200) {
+          setPassengers(
+            passengers?.filter(
+              (singlePassenger) => singlePassenger?.id !== passenger?.id
+            )
+          );
+        }
+      }
+    } catch (error) {
+      console.log({ error });
     }
   };
 
@@ -393,7 +409,7 @@ export async function getServerSideProps() {
     try {
       const response = await axios.get(process.env.ACCESSTOKEN_URL);
       const userFound = await axios.get(
-        `https://www.zohoapis.com/crm/v3/Contacts/4295937000002194589`,
+        `https://www.zohoapis.com/crm/v3/Contacts/4295937000003106009`,
         {
           headers: {
             Authorization: response.data.access_token,
@@ -403,7 +419,7 @@ export async function getServerSideProps() {
       // console.log("Access Token ", response.data.access_token);
 
       const otherUsersResp = await axios.get(
-        `https://www.zohoapis.com/crm/v4/Contacts/search?criteria=(Associated_with:equals:4295937000002194589)`,
+        `https://www.zohoapis.com/crm/v4/Contacts/search?criteria=(Associated_with:equals:4295937000003106009)`,
         {
           headers: {
             Authorization: response.data.access_token,

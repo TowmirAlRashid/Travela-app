@@ -63,13 +63,13 @@ const AddPassenger = ({
       console.log(result);
 
       if (result.status === 200) {
-        // setPassengers([
-        //   ...passengers,
-        //   {
-        //     ...submitData,
-        //     Full_Name: data?.First_Name + " " + data?.Last_Name,
-        //   },
-        // ]);
+        setPassengers([
+          ...passengers,
+          {
+            ...submitData,
+            Full_Name: data?.First_Name + " " + data?.Last_Name,
+          },
+        ]);
 
         setMessage("New Passenger added! Please Refresh the page.");
       }

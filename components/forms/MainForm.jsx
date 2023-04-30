@@ -426,7 +426,7 @@ const MainForm = ({
                         inputFormat="YYYY-MM-DD"
                         label="Date of Birth"
                         {...field}
-                        // defaultValue={dayjs(passengerSelected?.Date_of_Birth)}
+                        defaultValue={dayjs(passengerSelected?.Date_of_Birth)}
                         onChange={(newValue) => {
                           const formattedDate =
                             dayjs(newValue).format("YYYY-MM-DD");
@@ -439,7 +439,6 @@ const MainForm = ({
                             type="date"
                             sx={{
                               "& .MuiInputBase-input": {
-                                // height: "2.3rem !important",
                                 padding: "14px 14px",
                               },
                               width: {
@@ -454,7 +453,6 @@ const MainForm = ({
                               },
                             }}
                             {...params}
-                            // error={errors["Due_Date"]}
                           />
                         )}
                       />

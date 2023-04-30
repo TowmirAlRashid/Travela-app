@@ -4,21 +4,14 @@ export default async function handler(req, res) {
   try {
     const accessToken = await axios.get(process.env.ACCESSTOKEN_URL);
 
-    let url = `https://www.zohoapis.com/crm/v2/${req.body.moduleName}/${req.body.id}`;
+    console.log(accessToken?.data?.access_token);
+    console.log({ req });
+    console.log(req.body.moduleName);
+    console.log(req.body.id);
 
-    let updatedFieldObj = req.body.updatedField;
+    let url = `https://www.zohoapis.com/crm/v4/${req.body.moduleName}/${req.body.id}`;
 
-    let requestBody = {};
-    let recordArray = [];
-    // console.log({ url });
-    recordArray.push(updatedFieldObj);
-
-    requestBody["data"] = recordArray;
-
-    let trigger = ["workflow"];
-    requestBody["trigger"] = trigger;
-
-    let response = await axios.put(url, requestBody, {
+    let response = await axios.delete(url, {
       headers: {
         Authorization: accessToken?.data?.access_token,
       },
@@ -27,7 +20,7 @@ export default async function handler(req, res) {
     if (response.data?.data) {
       await res.json({
         status: response.status,
-        message: "Record updated successfully!",
+        message: "Record deleted successfully!",
       });
       return;
     } else {
