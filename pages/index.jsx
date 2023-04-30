@@ -85,8 +85,36 @@ export default function Home({ countries, primaryContact, otherContacts }) {
     return outputArray;
   }
 
+  function filterPrograms(data) {
+    const filteredData = {};
+    Object?.keys(data).forEach((key) => {
+      if (key.includes("Program")) {
+        filteredData[key] = data[key];
+      }
+    });
+
+    const outputArray = [];
+    for (let i = 1; i <= 5; i++) {
+      const nameKey = `Program_Name_${i}`;
+      const NumberKey = `Program_Membership_Number_${i}`;
+      if (filteredData[nameKey] !== null || filteredData[NumberKey] !== null) {
+        const programObj = {
+          [nameKey]: filteredData[nameKey] || "",
+          [NumberKey]: filteredData[NumberKey] || "",
+        };
+        outputArray.push(programObj);
+      }
+    }
+
+    return outputArray;
+  }
+
   const [currentOccasions, setCurrentOccasions] = useState(
     filterOccasions(passengerSelected || {})
+  ); // keeps the current occasions
+
+  const [currentPrograms, setCurrentPrograms] = useState(
+    filterPrograms(passengerSelected || {})
   ); // keeps the current occasions
 
   const [openAddPassengerDialog, setOpenAddPassengerDialog] = useState(false);
@@ -390,6 +418,8 @@ export default function Home({ countries, primaryContact, otherContacts }) {
                     setPassengerSelected={setPassengerSelected}
                     currentOccasions={currentOccasions}
                     setCurrentOccasions={setCurrentOccasions}
+                    currentPrograms={currentPrograms}
+                    setCurrentPrograms={setCurrentPrograms}
                   />
                 </Box>
               </Box>

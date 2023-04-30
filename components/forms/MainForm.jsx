@@ -36,6 +36,8 @@ const MainForm = ({
   setPassengerSelected,
   currentOccasions,
   setCurrentOccasions,
+  currentPrograms,
+  setCurrentPrograms,
 }) => {
   const [attachments, setAttachments] = useState([]);
   const [isLoading, setIsLoading] = useState(false); // submit loading
@@ -127,6 +129,26 @@ const MainForm = ({
       Occasion_4_Date: data?.Occasion_4_Date,
       Occasion_5: data?.Occasion_5,
       Occasion_5_Date: data?.Occasion_5_Date,
+      Program_Name_1: data?.Program_Name_1,
+      Program_Membership_Number_1: data?.Program_Membership_Number_1,
+      Program_Name_2: data?.Program_Name_2,
+      Program_Membership_Number_2: data?.Program_Membership_Number_2,
+      Program_Name_3: data?.Program_Name_3,
+      Program_Membership_Number_3: data?.Program_Membership_Number_3,
+      Program_Name_4: data?.Program_Name_4,
+      Program_Membership_Number_4: data?.Program_Membership_Number_4,
+      Program_Name_5: data?.Program_Name_5,
+      Program_Membership_Number_5: data?.Program_Membership_Number_5,
+      Program_Name_6: data?.Program_Name_6,
+      Program_Membership_Number_6: data?.Program_Membership_Number_6,
+      Program_Name_7: data?.Program_Name_7,
+      Program_Membership_Number_7: data?.Program_Membership_Number_7,
+      Program_Name_8: data?.Program_Name_8,
+      Program_Membership_Number_8: data?.Program_Membership_Number_8,
+      Program_Name_9: data?.Program_Name_9,
+      Program_Membership_Number_9: data?.Program_Membership_Number_9,
+      Program_Name_10: data?.Program_Name_10,
+      Program_Membership_Number_10: data?.Program_Membership_Number_10,
       Wheelchair: data?.Wheelchair,
       Extral_Legroom: data?.Extral_Legroom,
       Pet: data?.Pet,
@@ -2374,56 +2396,6 @@ const MainForm = ({
                       }}
                     />
 
-                    {/* <Controller
-                      name={`Occasion_${index + 1}_Date`}
-                      control={control}
-                      defaultValue={dayjs(
-                        `${occasion?.[`Occasion_${index + 1}_Date`]}`
-                      )}
-                      render={({ field: { ref, ...field } }) => {
-                        return (
-                          <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DatePicker
-                              inputFormat="YYYY-MM-DD"
-                              label="Occasion Date"
-                              {...field}
-                              // defaultValue={dayjs(passengerSelected?.Date_of_Birth)}
-                              onChange={(newValue) => {
-                                const formattedDate =
-                                  dayjs(newValue).format("YYYY-MM-DD");
-                                field.onChange(formattedDate);
-                              }}
-                              renderInput={(params) => (
-                                <TextField
-                                  id="occasion_1_date"
-                                  variant="outlined"
-                                  type="date"
-                                  sx={{
-                                    "& .MuiInputBase-input": {
-                                      // height: "2.3rem !important",
-                                      padding: "14px 14px",
-                                    },
-                                    width: {
-                                      // lg: "46%",
-                                      // md: "46%",
-                                      sm: "100%",
-                                      xs: "100%",
-                                    },
-                                    mt: {
-                                      lg: "-1.1rem",
-                                      md: "-1.1rem",
-                                    },
-                                  }}
-                                  {...params}
-                                  // error={errors["Due_Date"]}
-                                />
-                              )}
-                            />
-                          </LocalizationProvider>
-                        );
-                      }}
-                    /> */}
-
                     <Controller
                       name={`Occasion_${index + 1}_Date`}
                       control={control}
@@ -2525,7 +2497,7 @@ const MainForm = ({
         <Box
           sx={{
             width: "100%",
-            height: "100%",
+            // height: "100%",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-start",
@@ -2568,35 +2540,173 @@ const MainForm = ({
               sx={{
                 width: "100%",
                 display: "flex",
+                flexDirection: {
+                  lg: "row",
+                  md: "row",
+                  sm: "column",
+                  xs: "column",
+                },
                 justifyContent: {
-                  lg: "flex-end",
-                  md: "flex-end",
+                  lg: "space-between",
+                  md: "space-between",
                   sm: "flex-start",
                   xs: "flex-start",
                 },
-                alignItems: "center",
-                // mb: "1rem",
+                alignItems: "flex-start",
+                gap: {
+                  sm: "1rem",
+                  xs: "0.8rem",
+                },
+                mb: "1rem",
               }}
             >
+              <Typography fontWeight="bold">
+                Add your loyality programs here
+              </Typography>
+
               <Button
                 sx={{ color: "red" }}
                 onClick={() => {
-                  setPassengerSelected({
-                    ...passengerSelected,
-                    loyality_programs: [
-                      ...passengerSelected?.loyality_programs,
-                      {
-                        loyality_program_company: "",
-                        loyality_program: "",
-                        reward_number: "",
-                      },
-                    ],
-                  });
+                  setCurrentPrograms([
+                    ...currentPrograms,
+                    {
+                      [`Program_Name_${currentPrograms?.length + 1}`]: "",
+                      [`Program_Membership_Number_${
+                        currentPrograms?.length + 1
+                      }`]: "",
+                    },
+                  ]);
                 }}
               >
                 + Add Program
               </Button>
             </Box>
+
+            {currentPrograms?.map((program, index) => {
+              return (
+                <Box
+                  key={index}
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    flexDirection: "column",
+                    gap: {
+                      lg: "1.2rem",
+                      md: "1.2rem",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: "100%",
+                      border: "1px solid black",
+                      borderRadius: "4px",
+                      p: "0.5rem",
+                      mb: "0.7rem",
+                    }}
+                  >
+                    <Typography>Program {index + 1}</Typography>
+
+                    <Box
+                      sx={{
+                        width: "100%",
+                        display: "flex",
+                        flexDirection: {
+                          lg: "row",
+                          md: "row",
+                          sm: "column",
+                          xs: "column",
+                        },
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        gap: {
+                          lg: "1rem",
+                          md: "1rem",
+                        },
+                        mt: "1rem",
+                      }}
+                    >
+                      <Controller
+                        name={`Program_Name_${index + 1}`}
+                        control={control}
+                        defaultValue={`${
+                          program?.[`Program_Name_${index + 1}`]
+                        }`}
+                        render={({ field }) => {
+                          return (
+                            <Autocomplete
+                              {...field}
+                              disablePortal
+                              options={["Option 1", "Option 2"]}
+                              getOptionLabel={(option) => option}
+                              onChange={(_, data) => {
+                                field.onChange(data);
+                              }}
+                              sx={{
+                                "& .MuiInputBase-root": {
+                                  padding: "6px 14px",
+                                  mb: "1rem",
+                                },
+                                width: {
+                                  lg: "46%",
+                                  md: "46%",
+                                  sm: "100%",
+                                  xs: "100%",
+                                },
+                              }}
+                              renderInput={(params) => (
+                                <TextField {...params} label="Program Name" />
+                              )}
+                            />
+                          );
+                        }}
+                      />
+
+                      <Controller
+                        control={control}
+                        name={`Program_Membership_Number_${index + 1}`}
+                        defaultValue={`${
+                          program?.[`Program_Membership_Number_${index + 1}`]
+                        }`}
+                        // rules={{ required: true }}
+                        render={({ field }) => (
+                          <TextField
+                            inputProps={{
+                              style: {
+                                padding: "12px 8px",
+                                margin: "2px 8px",
+                              },
+                            }}
+                            // id="How_Many_Vaccine_Doses_Taken"
+                            variant="outlined"
+                            {...field}
+                            sx={{
+                              width: {
+                                lg: "46%",
+                                md: "46%",
+                                sm: "100%",
+                                xs: "100%",
+                              },
+                              mb: {
+                                lg: "1.2rem",
+                                md: "1.2rem",
+                                sm: "0.7rem",
+                                xs: "0.7rem",
+                              },
+                            }}
+                            // error={errors["first_name"]}
+                            label="Program membership number"
+                          />
+                        )}
+                      />
+                    </Box>
+                  </Box>
+                </Box>
+              );
+            })}
           </Box>
 
           {!isMobile && (
