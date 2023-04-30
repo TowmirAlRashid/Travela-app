@@ -2670,22 +2670,16 @@ const MainForm = ({
                   name="Wheelchair"
                   control={control}
                   defaultValue={passengerSelected?.Wheelchair}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: props }) => (
                     <Checkbox
-                      value={passengerSelected?.Wheelchair}
-                      checked={value}
-                      onChange={(e) => onChange(e.target.checked)}
+                      {...props}
+                      checked={props.value}
+                      onChange={(e) => props.onChange(e.target.checked)}
                     />
                   )}
                 />
               }
               label="Wheelchair"
-              value={passengerSelected?.Wheelchair}
-              onChange={(e) =>
-                setValue("Wheelchair", e.target.checked, {
-                  shouldDirty: true,
-                })
-              }
             />
 
             <FormControlLabel
@@ -2694,22 +2688,16 @@ const MainForm = ({
                   name="Extral_Legroom"
                   control={control}
                   defaultValue={passengerSelected?.Extral_Legroom}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: props }) => (
                     <Checkbox
-                      value={passengerSelected?.Extral_Legroom}
-                      checked={value}
-                      onChange={(e) => onChange(e.target.checked)}
+                      {...props}
+                      checked={props.value}
+                      onChange={(e) => props.onChange(e.target.checked)}
                     />
                   )}
                 />
               }
-              label="Extral Legroom"
-              value={passengerSelected?.Extral_Legroom}
-              onChange={(e) =>
-                setValue("Extral_Legroom", e.target.checked, {
-                  shouldDirty: true,
-                })
-              }
+              label="Extra Legroom"
             />
 
             <FormControlLabel
@@ -2718,22 +2706,16 @@ const MainForm = ({
                   name="Pet"
                   control={control}
                   defaultValue={passengerSelected?.Pet}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: props }) => (
                     <Checkbox
-                      value={passengerSelected?.Pet}
-                      checked={value}
-                      onChange={(e) => onChange(e.target.checked)}
+                      {...props}
+                      checked={props.value}
+                      onChange={(e) => props.onChange(e.target.checked)}
                     />
                   )}
                 />
               }
               label="Pet"
-              value={passengerSelected?.Pet}
-              onChange={(e) =>
-                setValue("Pet", e.target.checked, {
-                  shouldDirty: true,
-                })
-              }
             />
 
             <FormControlLabel
@@ -2742,22 +2724,16 @@ const MainForm = ({
                   name="Medical"
                   control={control}
                   defaultValue={passengerSelected?.Medical}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: props }) => (
                     <Checkbox
-                      value={passengerSelected?.Medical}
-                      checked={value}
-                      onChange={(e) => onChange(e.target.checked)}
+                      {...props}
+                      checked={props.value}
+                      onChange={(e) => props.onChange(e.target.checked)}
                     />
                   )}
                 />
               }
               label="Medical"
-              value={passengerSelected?.Medical}
-              onChange={(e) =>
-                setValue("Medical", e.target.checked, {
-                  shouldDirty: true,
-                })
-              }
             />
 
             <FormControlLabel
@@ -2766,22 +2742,16 @@ const MainForm = ({
                   name="Airport_Assistance"
                   control={control}
                   defaultValue={passengerSelected?.Airport_Assistance}
-                  render={({ field: { value, onChange } }) => (
+                  render={({ field: props }) => (
                     <Checkbox
-                      checked={value}
-                      value={passengerSelected?.Airport_Assistance}
-                      onChange={(e) => onChange(e.target.checked)}
+                      {...props}
+                      checked={props.value}
+                      onChange={(e) => props.onChange(e.target.checked)}
                     />
                   )}
                 />
               }
               label="Airport Assistance"
-              value={passengerSelected?.Airport_Assistance}
-              onChange={(e) =>
-                setValue("Airport_Assistance", e.target.checked, {
-                  shouldDirty: true,
-                })
-              }
             />
 
             <Controller
