@@ -61,12 +61,14 @@ const MobileRowCard = ({
             onClick={() => {
               if (!passengerSelected) {
                 setPassengerSelected(data);
+                setNavElementSelected("Personal Details");
               } else {
                 if (passengerSelected?.id === data?.id) {
                   setPassengerSelected(null);
                 } else {
                   setPassengerSelected(null);
                   setPassengerSelected(data);
+                  setNavElementSelected("Personal Details");
                 }
               }
             }}

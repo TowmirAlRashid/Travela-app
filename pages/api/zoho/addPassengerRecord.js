@@ -27,9 +27,10 @@ export default async function handler(req, res) {
     });
 
     if (response.data?.data) {
-      console.log({ t: response.data?.data });
+      console.log({ t: response.data });
       await res.json({
         status: response.status,
+        details: response.data,
         message: "Record created successfully!",
       });
       return;

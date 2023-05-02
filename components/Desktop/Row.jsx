@@ -8,6 +8,7 @@ const Row = ({
   handleDeletePassenger,
   passengerSelected,
   setPassengerSelected,
+  setNavElementSelected,
 }) => {
   const [hovered, setHovered] = useState(false);
 
@@ -37,6 +38,7 @@ const Row = ({
       onClick={() => {
         setPassengerSelected(null);
         setPassengerSelected(data);
+        setNavElementSelected("Personal Details");
       }}
     >
       <Typography

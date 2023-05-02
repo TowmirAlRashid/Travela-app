@@ -34,6 +34,7 @@ const AddPassenger = ({
   } = useForm({
     defaultValues: {
       First_Name: "",
+      Middle_Name: "",
       Last_Name: "",
       Type: "",
     },
@@ -44,6 +45,7 @@ const AddPassenger = ({
 
     const submitData = {
       First_Name: data?.First_Name,
+      Middle_Name: data?.Middle_Name,
       Last_Name: data?.Last_Name,
       Type: data?.Type,
       Associated_with: primaryContactId,
@@ -68,6 +70,7 @@ const AddPassenger = ({
           {
             ...submitData,
             Full_Name: data?.First_Name + " " + data?.Last_Name,
+            id: result?.data?.details?.data?.[0]?.details?.id,
           },
         ]);
 
@@ -100,7 +103,7 @@ const AddPassenger = ({
           <Controller
             control={control}
             name="First_Name"
-            // rules={{ required: true }}
+            rules={{ required: true }}
             render={({ field }) => (
               <TextField
                 inputProps={{
@@ -116,8 +119,35 @@ const AddPassenger = ({
                   mb: "1rem",
                   width: "100%",
                 }}
-                // error={errors["First_Name"]}
+                error={errors["First_Name"]}
                 label="First Name"
+                // InputLabelProps={{ shrink: true }}
+              />
+            )}
+          />
+
+          <Controller
+            control={control}
+            name="Middle_Name"
+            rules={{ required: true }}
+            render={({ field }) => (
+              <TextField
+                inputProps={{
+                  style: {
+                    padding: "12px 8px",
+                    margin: "2px 8px",
+                  },
+                }}
+                id="Middle_Name"
+                variant="outlined"
+                {...field}
+                sx={{
+                  mb: "1rem",
+                  width: "100%",
+                }}
+                error={errors["Middle_Name"]}
+                label="Middle Name"
+                // InputLabelProps={{ shrink: true }}
               />
             )}
           />
@@ -143,6 +173,7 @@ const AddPassenger = ({
                 }}
                 error={errors["Last_Name"]}
                 label="Last Name*"
+                // InputLabelProps={{ shrink: true }}
               />
             )}
           />
@@ -169,7 +200,11 @@ const AddPassenger = ({
                     width: "100%",
                   }}
                   renderInput={(params) => (
-                    <TextField {...params} label="Type" />
+                    <TextField
+                      {...params}
+                      label="Type"
+                      // InputLabelProps={{ shrink: true }}
+                    />
                   )}
                 />
               );

@@ -40,6 +40,7 @@ const MainForm = ({
   setCurrentPrograms,
 }) => {
   const [attachments, setAttachments] = useState([]);
+  const [test, setTest] = useState();
   const [isLoading, setIsLoading] = useState(false); // submit loading
   const [open, setOpen] = useState(false); // dialog open
   const [message, setMessage] = useState(""); // message for the confirmation dialog
@@ -57,6 +58,7 @@ const MainForm = ({
     handleSubmit,
     reset,
     watch,
+    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: passengerSelected || {},
@@ -65,7 +67,11 @@ const MainForm = ({
   // console.log(passengerSelected);
 
   useEffect(() => {
+    reset({ data: "test" });
     reset(passengerSelected);
+    setTest(passengerSelected);
+    // setValue("defaultValues", passengerSelected);
+    // console.log("test");
   }, [passengerSelected, reset]);
 
   const onsubmit = async (data) => {
@@ -177,6 +183,9 @@ const MainForm = ({
       setIsLoading(false);
     }
 
+    if (attachments?.length > 0) {
+    }
+
     console.log(submitData);
   };
 
@@ -218,6 +227,7 @@ const MainForm = ({
           />
         </Box>
       )}
+      {/* {passengerSelected?.Full_Name} */}
 
       {navElementSelected === "Personal Details" && (
         <Box
@@ -287,16 +297,22 @@ const MainForm = ({
                         xs: "100%",
                       },
                     }}
+                    InputLabelProps={{ shrink: true }}
                     error={errors["First_Name"]}
                     label="First Name*"
                   />
                 )}
               />
+              {/* {JSON.stringify(test?.Middle_Name)} */}
 
               <Controller
                 control={control}
                 name="Middle_Name"
-                defaultValue={passengerSelected?.Middle_Name}
+                defaultValue={
+                  passengerSelected?.Middle_Name
+                    ? passengerSelected?.Middle_Name
+                    : ""
+                }
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
@@ -309,6 +325,7 @@ const MainForm = ({
                     id="first_name"
                     variant="outlined"
                     {...field}
+                    InputLabelProps={{ shrink: true }}
                     sx={{
                       mb: "1rem",
                       width: {
@@ -359,6 +376,7 @@ const MainForm = ({
                     id="last_name"
                     variant="outlined"
                     {...field}
+                    InputLabelProps={{ shrink: true }}
                     sx={{
                       width: {
                         lg: "46%",
@@ -435,7 +453,11 @@ const MainForm = ({
                         },
                       }}
                       renderInput={(params) => (
-                        <TextField {...params} label="Gender" />
+                        <TextField
+                          {...params}
+                          label="Gender"
+                          InputLabelProps={{ shrink: true }}
+                        />
                       )}
                     />
                   );
@@ -478,6 +500,7 @@ const MainForm = ({
                               },
                             }}
                             {...params}
+                            InputLabelProps={{ shrink: true }}
                           />
                         )}
                         dayPickerProps={{
@@ -626,7 +649,11 @@ const MainForm = ({
                         },
                       }}
                       renderInput={(params) => (
-                        <TextField {...params} label="Are you Vaccinated?" />
+                        <TextField
+                          {...params}
+                          label="Are you Vaccinated?"
+                          InputLabelProps={{ shrink: true }}
+                        />
                       )}
                     />
                   );
@@ -640,6 +667,7 @@ const MainForm = ({
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
+                    InputLabelProps={{ shrink: true }}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -761,6 +789,7 @@ const MainForm = ({
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
+                    InputLabelProps={{ shrink: true }}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -832,6 +861,7 @@ const MainForm = ({
                   // rules={{ required: true }}
                   render={({ field }) => (
                     <TextField
+                      InputLabelProps={{ shrink: true }}
                       inputProps={{
                         style: {
                           padding: "12px 8px",
@@ -966,6 +996,7 @@ const MainForm = ({
                   // rules={{ required: true }}
                   render={({ field }) => (
                     <TextField
+                      InputLabelProps={{ shrink: true }}
                       inputProps={{
                         style: {
                           padding: "12px 8px",
@@ -997,6 +1028,7 @@ const MainForm = ({
                   // rules={{ required: true }}
                   render={({ field }) => (
                     <TextField
+                      InputLabelProps={{ shrink: true }}
                       inputProps={{
                         style: {
                           padding: "12px 8px",
@@ -1047,6 +1079,7 @@ const MainForm = ({
                   // rules={{ required: true }}
                   render={({ field }) => (
                     <TextField
+                      InputLabelProps={{ shrink: true }}
                       inputProps={{
                         style: {
                           padding: "12px 8px",
@@ -1070,6 +1103,7 @@ const MainForm = ({
                   // rules={{ required: true }}
                   render={({ field }) => (
                     <TextField
+                      InputLabelProps={{ shrink: true }}
                       inputProps={{
                         style: {
                           padding: "12px 8px",
@@ -1112,6 +1146,7 @@ const MainForm = ({
                   // rules={{ required: true }}
                   render={({ field }) => (
                     <TextField
+                      InputLabelProps={{ shrink: true }}
                       inputProps={{
                         style: {
                           padding: "12px 8px",
@@ -1180,6 +1215,7 @@ const MainForm = ({
                   // rules={{ required: true }}
                   render={({ field }) => (
                     <TextField
+                      InputLabelProps={{ shrink: true }}
                       inputProps={{
                         style: {
                           padding: "12px 8px",
@@ -1211,6 +1247,7 @@ const MainForm = ({
                   // rules={{ required: true }}
                   render={({ field }) => (
                     <TextField
+                      InputLabelProps={{ shrink: true }}
                       inputProps={{
                         style: {
                           padding: "12px 8px",
@@ -1261,6 +1298,7 @@ const MainForm = ({
                   // rules={{ required: true }}
                   render={({ field }) => (
                     <TextField
+                      InputLabelProps={{ shrink: true }}
                       inputProps={{
                         style: {
                           padding: "12px 8px",
@@ -1284,6 +1322,7 @@ const MainForm = ({
                   // rules={{ required: true }}
                   render={({ field }) => (
                     <TextField
+                      InputLabelProps={{ shrink: true }}
                       inputProps={{
                         style: {
                           padding: "12px 8px",
@@ -1326,6 +1365,7 @@ const MainForm = ({
                   // rules={{ required: true }}
                   render={({ field }) => (
                     <TextField
+                      InputLabelProps={{ shrink: true }}
                       inputProps={{
                         style: {
                           padding: "12px 8px",
@@ -1443,6 +1483,7 @@ const MainForm = ({
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
+                    InputLabelProps={{ shrink: true }}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -1466,6 +1507,7 @@ const MainForm = ({
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
+                    InputLabelProps={{ shrink: true }}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -1508,6 +1550,7 @@ const MainForm = ({
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
+                    InputLabelProps={{ shrink: true }}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -1531,6 +1574,7 @@ const MainForm = ({
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
+                    InputLabelProps={{ shrink: true }}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -1594,7 +1638,11 @@ const MainForm = ({
                         },
                       }}
                       renderInput={(params) => (
-                        <TextField {...params} label="Country Code" />
+                        <TextField
+                          {...params}
+                          label="Country Code"
+                          InputLabelProps={{ shrink: true }}
+                        />
                       )}
                     />
                   );
@@ -1620,6 +1668,7 @@ const MainForm = ({
                     sx={{ mb: "0.7rem", width: "100%" }}
                     // error={errors["first_name"]}
                     label="Phone Number"
+                    InputLabelProps={{ shrink: true }}
                   />
                 )}
               />
@@ -1736,6 +1785,7 @@ const MainForm = ({
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
+                    InputLabelProps={{ shrink: true }}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -1761,6 +1811,7 @@ const MainForm = ({
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
+                    InputLabelProps={{ shrink: true }}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -1786,6 +1837,7 @@ const MainForm = ({
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
+                    InputLabelProps={{ shrink: true }}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -1828,6 +1880,7 @@ const MainForm = ({
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
+                    InputLabelProps={{ shrink: true }}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -1851,6 +1904,7 @@ const MainForm = ({
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
+                    InputLabelProps={{ shrink: true }}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -1874,6 +1928,7 @@ const MainForm = ({
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
+                    InputLabelProps={{ shrink: true }}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -1933,7 +1988,11 @@ const MainForm = ({
                         mb: "0.7rem",
                       }}
                       renderInput={(params) => (
-                        <TextField {...params} label="Type" />
+                        <TextField
+                          {...params}
+                          label="Type"
+                          InputLabelProps={{ shrink: true }}
+                        />
                       )}
                     />
                   );
@@ -1962,7 +2021,11 @@ const MainForm = ({
                         mb: "0.7rem",
                       }}
                       renderInput={(params) => (
-                        <TextField {...params} label="Country" />
+                        <TextField
+                          {...params}
+                          label="Country"
+                          InputLabelProps={{ shrink: true }}
+                        />
                       )}
                     />
                   );
@@ -1991,7 +2054,11 @@ const MainForm = ({
                         mb: "0.7rem",
                       }}
                       renderInput={(params) => (
-                        <TextField {...params} label="Gender" />
+                        <TextField
+                          {...params}
+                          label="Gender"
+                          InputLabelProps={{ shrink: true }}
+                        />
                       )}
                     />
                   );
@@ -2024,6 +2091,7 @@ const MainForm = ({
                 // rules={{ required: true }}
                 render={({ field }) => (
                   <TextField
+                    InputLabelProps={{ shrink: true }}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -2086,6 +2154,7 @@ const MainForm = ({
                         }}
                         renderInput={(params) => (
                           <TextField
+                            InputLabelProps={{ shrink: true }}
                             id="Date_of_Expiry"
                             variant="outlined"
                             type="date"
@@ -2136,6 +2205,7 @@ const MainForm = ({
                         }}
                         renderInput={(params) => (
                           <TextField
+                            InputLabelProps={{ shrink: true }}
                             id="Date_of_Birth_As_Shown_in_Passport_Document"
                             variant="outlined"
                             type="date"
@@ -2184,6 +2254,7 @@ const MainForm = ({
                         }}
                         renderInput={(params) => (
                           <TextField
+                            InputLabelProps={{ shrink: true }}
                             id="Date_of_Issue"
                             variant="outlined"
                             type="date"
@@ -2389,7 +2460,11 @@ const MainForm = ({
                               },
                             }}
                             renderInput={(params) => (
-                              <TextField {...params} label="Occasion" />
+                              <TextField
+                                {...params}
+                                label="Occasion"
+                                InputLabelProps={{ shrink: true }}
+                              />
                             )}
                           />
                         );
@@ -2427,6 +2502,7 @@ const MainForm = ({
                               }}
                               renderInput={(params) => (
                                 <TextField
+                                  InputLabelProps={{ shrink: true }}
                                   id="Occasion_Date"
                                   variant="outlined"
                                   type="date"
@@ -2658,7 +2734,11 @@ const MainForm = ({
                                 },
                               }}
                               renderInput={(params) => (
-                                <TextField {...params} label="Program Name" />
+                                <TextField
+                                  {...params}
+                                  label="Program Name"
+                                  InputLabelProps={{ shrink: true }}
+                                />
                               )}
                             />
                           );
@@ -2674,6 +2754,7 @@ const MainForm = ({
                         // rules={{ required: true }}
                         render={({ field }) => (
                           <TextField
+                            InputLabelProps={{ shrink: true }}
                             inputProps={{
                               style: {
                                 padding: "12px 8px",
@@ -2871,6 +2952,7 @@ const MainForm = ({
               // rules={{ required: true }}
               render={({ field }) => (
                 <TextField
+                  InputLabelProps={{ shrink: true }}
                   inputProps={{
                     style: {
                       padding: "6px 8px",
