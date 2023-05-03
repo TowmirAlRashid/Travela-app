@@ -22,6 +22,8 @@ const FileInput = (props) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: props.accept,
+    multiple: false,
+    maxFiles: 1,
   });
   useEffect(() => {
     register(name);
@@ -48,7 +50,9 @@ const FileInput = (props) => {
         }}
         className={" " + (isDragActive ? " " : " ")}
       >
-        <p style={{ marginBottom: "10px" }}>Drop the files here ...</p>
+        <p style={{ marginBottom: "10px" }}>
+          Drop a single file here or click to upload ...
+        </p>
 
         {!!attachments?.length && (
           <Box

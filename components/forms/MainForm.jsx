@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import axios from "axios";
+import FormData from "form-data";
 
 import dayjs from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -183,8 +184,22 @@ const MainForm = ({
       setIsLoading(false);
     }
 
-    if (attachments?.length > 0) {
-    }
+    // if (attachments?.length > 0) {
+    //   const formData = new FormData();
+    //   formData.append("file", attachments?.[0]);
+    //   formData.append("id", passengerSelected?.id);
+
+    //   try {
+    //     console.log(formData);
+    //     let res = await axios.post("/api/uploadfile", formData);
+    //     console.log({ res });
+    //     if (res?.data?.status === 200) {
+    //       console.log(res);
+    //     }
+    //   } catch (error) {
+    //     alert(error);
+    //   }
+    // }
 
     console.log(submitData);
   };
