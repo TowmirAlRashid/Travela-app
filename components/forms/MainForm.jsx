@@ -469,16 +469,17 @@ const MainForm = ({
                 control={control}
                 defaultValue={dayjs(passengerSelected?.Date_of_Birth)}
                 render={({ field: { ref, ...field } }) => {
-                  const selectedDate = dayjs(field.value).format("YYYY-MM-DD");
+                  const selectedDate = dayjs(field.value).format("DD-MM-YYYY");
                   return (
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePicker
+                        format="DD/MM/YYYY"
                         label="Date of Birth"
                         {...field}
                         value={dayjs(selectedDate)}
                         onChange={(newValue) => {
                           const formattedDate =
-                            dayjs(newValue).format("YYYY-MM-DD");
+                            dayjs(newValue).format("DD-MM-YYYY");
                           field.onChange(formattedDate);
                         }}
                         sx={{
@@ -2132,16 +2133,17 @@ const MainForm = ({
                 control={control}
                 defaultValue={dayjs(passengerSelected?.Date_of_Expiry)}
                 render={({ field: { ref, ...field } }) => {
-                  const selectedDate = dayjs(field.value).format("YYYY-MM-DD");
+                  const selectedDate = dayjs(field.value).format("DD/MM/YYYY");
                   return (
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePicker
+                        format="DD/MM/YYYY"
                         label="Expiration Date"
                         {...field}
                         value={dayjs(selectedDate)}
                         onChange={(newValue) => {
                           const formattedDate =
-                            dayjs(newValue).format("YYYY-MM-DD");
+                            dayjs(newValue).format("DD/MM/YYYY");
                           field.onChange(formattedDate);
                         }}
                         sx={{
@@ -2150,6 +2152,12 @@ const MainForm = ({
                             md: "32%",
                             sm: "100%",
                             xs: "100%",
+                          },
+                          mb: {
+                            xs: "1rem",
+                            sm: "1rem",
+                            md: 0,
+                            lg: 0,
                           },
                         }}
                         renderInput={(params) => (
@@ -2183,16 +2191,17 @@ const MainForm = ({
                   passengerSelected?.Date_of_Birth_As_Shown_in_Passport_Document
                 )}
                 render={({ field: { ref, ...field } }) => {
-                  const selectedDate = dayjs(field.value).format("YYYY-MM-DD");
+                  const selectedDate = dayjs(field.value).format("DD/MM/YYYY");
                   return (
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePicker
+                        format="DD/MM/YYYY"
                         label="Date of Birth"
                         {...field}
                         value={dayjs(selectedDate)}
                         onChange={(newValue) => {
                           const formattedDate =
-                            dayjs(newValue).format("YYYY-MM-DD");
+                            dayjs(newValue).format("DD/MM/YYYY");
                           field.onChange(formattedDate);
                         }}
                         sx={{
@@ -2201,6 +2210,12 @@ const MainForm = ({
                             md: "32%",
                             sm: "100%",
                             xs: "100%",
+                          },
+                          mb: {
+                            xs: "1rem",
+                            sm: "1rem",
+                            md: 0,
+                            lg: 0,
                           },
                         }}
                         renderInput={(params) => (
@@ -2232,16 +2247,17 @@ const MainForm = ({
                 control={control}
                 defaultValue={dayjs(passengerSelected?.Date_of_Issue)}
                 render={({ field: { ref, ...field } }) => {
-                  const selectedDate = dayjs(field.value).format("YYYY-MM-DD");
+                  const selectedDate = dayjs(field.value).format("DD/MM/YYYY");
                   return (
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePicker
+                        format="DD/MM/YYYY"
                         label="Date of Issue"
                         {...field}
                         value={dayjs(selectedDate)}
                         onChange={(newValue) => {
                           const formattedDate =
-                            dayjs(newValue).format("YYYY-MM-DD");
+                            dayjs(newValue).format("DD/MM/YYYY");
                           field.onChange(formattedDate);
                         }}
                         sx={{
@@ -2479,17 +2495,18 @@ const MainForm = ({
                       )}
                       render={({ field: { ref, ...field } }) => {
                         const selectedDate = dayjs(field.value).format(
-                          "YYYY-MM-DD"
+                          "DD/MM/YYYY"
                         );
                         return (
                           <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DatePicker
+                              format="DD/MM/YYYY"
                               label="Occasion Date"
                               {...field}
                               value={dayjs(selectedDate)}
                               onChange={(newValue) => {
                                 const formattedDate =
-                                  dayjs(newValue).format("YYYY-MM-DD");
+                                  dayjs(newValue).format("DD/MM/YYYY");
                                 field.onChange(formattedDate);
                               }}
                               sx={{
