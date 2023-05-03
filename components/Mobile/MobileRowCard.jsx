@@ -17,6 +17,8 @@ const MobileRowCard = ({
   countries,
   currentOccasions,
   setCurrentOccasions,
+  currentPrograms,
+  setCurrentPrograms,
 }) => {
   return (
     <Box
@@ -142,6 +144,8 @@ const MobileRowCard = ({
             setPassengerSelected={setPassengerSelected}
             currentOccasions={currentOccasions}
             setCurrentOccasions={setCurrentOccasions}
+            currentPrograms={currentPrograms}
+            setCurrentPrograms={setCurrentPrograms}
           />
         </Box>
       )}

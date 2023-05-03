@@ -469,7 +469,7 @@ const MainForm = ({
                 control={control}
                 defaultValue={dayjs(passengerSelected?.Date_of_Birth)}
                 render={({ field: { ref, ...field } }) => {
-                  const selectedDate = dayjs(field.value).format("DD-MM-YYYY");
+                  const selectedDate = dayjs(field.value).format("YYYY-MM-DD");
                   return (
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePicker
@@ -479,7 +479,7 @@ const MainForm = ({
                         value={dayjs(selectedDate)}
                         onChange={(newValue) => {
                           const formattedDate =
-                            dayjs(newValue).format("DD-MM-YYYY");
+                            dayjs(newValue).format("YYYY-MM-DD");
                           field.onChange(formattedDate);
                         }}
                         sx={{
@@ -2133,7 +2133,7 @@ const MainForm = ({
                 control={control}
                 defaultValue={dayjs(passengerSelected?.Date_of_Expiry)}
                 render={({ field: { ref, ...field } }) => {
-                  const selectedDate = dayjs(field.value).format("DD/MM/YYYY");
+                  const selectedDate = dayjs(field.value).format("YYYY-MM-DD");
                   return (
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePicker
@@ -2143,7 +2143,7 @@ const MainForm = ({
                         value={dayjs(selectedDate)}
                         onChange={(newValue) => {
                           const formattedDate =
-                            dayjs(newValue).format("DD/MM/YYYY");
+                            dayjs(newValue).format("YYYY-MM-DD");
                           field.onChange(formattedDate);
                         }}
                         sx={{
@@ -2152,12 +2152,6 @@ const MainForm = ({
                             md: "32%",
                             sm: "100%",
                             xs: "100%",
-                          },
-                          mb: {
-                            xs: "1rem",
-                            sm: "1rem",
-                            md: 0,
-                            lg: 0,
                           },
                         }}
                         renderInput={(params) => (
@@ -2191,7 +2185,7 @@ const MainForm = ({
                   passengerSelected?.Date_of_Birth_As_Shown_in_Passport_Document
                 )}
                 render={({ field: { ref, ...field } }) => {
-                  const selectedDate = dayjs(field.value).format("DD/MM/YYYY");
+                  const selectedDate = dayjs(field.value).format("YYYY-MM-DD");
                   return (
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePicker
@@ -2201,7 +2195,7 @@ const MainForm = ({
                         value={dayjs(selectedDate)}
                         onChange={(newValue) => {
                           const formattedDate =
-                            dayjs(newValue).format("DD/MM/YYYY");
+                            dayjs(newValue).format("YYYY-MM-DD");
                           field.onChange(formattedDate);
                         }}
                         sx={{
@@ -2210,12 +2204,6 @@ const MainForm = ({
                             md: "32%",
                             sm: "100%",
                             xs: "100%",
-                          },
-                          mb: {
-                            xs: "1rem",
-                            sm: "1rem",
-                            md: 0,
-                            lg: 0,
                           },
                         }}
                         renderInput={(params) => (
@@ -2247,7 +2235,7 @@ const MainForm = ({
                 control={control}
                 defaultValue={dayjs(passengerSelected?.Date_of_Issue)}
                 render={({ field: { ref, ...field } }) => {
-                  const selectedDate = dayjs(field.value).format("DD/MM/YYYY");
+                  const selectedDate = dayjs(field.value).format("YYYY-MM-DD");
                   return (
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePicker
@@ -2257,7 +2245,7 @@ const MainForm = ({
                         value={dayjs(selectedDate)}
                         onChange={(newValue) => {
                           const formattedDate =
-                            dayjs(newValue).format("DD/MM/YYYY");
+                            dayjs(newValue).format("YYYY-MM-DD");
                           field.onChange(formattedDate);
                         }}
                         sx={{
@@ -2495,7 +2483,7 @@ const MainForm = ({
                       )}
                       render={({ field: { ref, ...field } }) => {
                         const selectedDate = dayjs(field.value).format(
-                          "DD/MM/YYYY"
+                          "YYYY-MM-DD"
                         );
                         return (
                           <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -2506,7 +2494,7 @@ const MainForm = ({
                               value={dayjs(selectedDate)}
                               onChange={(newValue) => {
                                 const formattedDate =
-                                  dayjs(newValue).format("DD/MM/YYYY");
+                                  dayjs(newValue).format("YYYY-MM-DD");
                                 field.onChange(formattedDate);
                               }}
                               sx={{

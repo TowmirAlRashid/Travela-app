@@ -109,17 +109,13 @@ export default function Home({ countries, primaryContact, otherContacts }) {
     return outputArray;
   }
 
-  const [currentOccasions, setCurrentOccasions] = useState([]); // keeps the current occasions
+  const [currentOccasions, setCurrentOccasions] = useState(
+    filterOccasions(passengerSelected || {})
+  ); // keeps the current occasions
 
-  const [currentPrograms, setCurrentPrograms] = useState([]); // keeps the current occasions
-
-  useEffect(() => {
-    let filteredOccasions = filterOccasions(passengerSelected || {});
-    let filteredPrograms = filterPrograms(passengerSelected || {});
-
-    setCurrentOccasions(filteredOccasions);
-    setCurrentPrograms(filteredPrograms);
-  }, [passengerSelected]);
+  const [currentPrograms, setCurrentPrograms] = useState(
+    filterPrograms(passengerSelected || {})
+  ); // keeps the current occasions
 
   const [openAddPassengerDialog, setOpenAddPassengerDialog] = useState(false);
 
@@ -305,6 +301,8 @@ export default function Home({ countries, primaryContact, otherContacts }) {
                         countries={countries}
                         currentOccasions={currentOccasions}
                         setCurrentOccasions={setCurrentOccasions}
+                        currentPrograms={currentPrograms}
+                        setCurrentPrograms={setCurrentPrograms}
                       />
                     );
                   })}
