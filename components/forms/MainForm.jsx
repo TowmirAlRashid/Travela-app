@@ -254,6 +254,7 @@ const MainForm = ({
             justifyContent: "space-between",
             alignItems: "flex-start",
             flexDirection: "column",
+            gap: "1rem",
           }}
         >
           <Box
@@ -955,6 +956,7 @@ const MainForm = ({
             justifyContent: "space-between",
             alignItems: "flex-start",
             flexDirection: "column",
+            gap: "1rem",
           }}
         >
           <Box
@@ -1741,6 +1743,7 @@ const MainForm = ({
             justifyContent: "space-between",
             alignItems: "flex-start",
             flexDirection: "column",
+            gap: "1rem",
           }}
         >
           <Box
@@ -2347,6 +2350,7 @@ const MainForm = ({
             justifyContent: "space-between",
             alignItems: "flex-start",
             flexDirection: "column",
+            gap: "1rem",
           }}
         >
           <Box
@@ -2599,6 +2603,7 @@ const MainForm = ({
             justifyContent: "space-between",
             alignItems: "flex-start",
             flexDirection: "column",
+            gap: "1rem",
           }}
         >
           <Box
@@ -2860,6 +2865,7 @@ const MainForm = ({
             justifyContent: "space-between",
             alignItems: "flex-start",
             flexDirection: "column",
+            gap: "1rem",
           }}
         >
           <Box
