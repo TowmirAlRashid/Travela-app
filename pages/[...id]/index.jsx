@@ -267,10 +267,10 @@ export default function Home({ countries, primaryContact, otherContacts }) {
                     pl: "0.5rem",
                   }}
                 >
-                  <Typography sx={{ width: "40%", fontSize: "14px" }}>
+                  <Typography sx={{ width: "60%", fontSize: "14px" }}>
                     Passenger Name
                   </Typography>
-                  <Typography sx={{ width: "60%", fontSize: "14px" }}>
+                  <Typography sx={{ width: "40%", fontSize: "14px" }}>
                     Type
                   </Typography>
                 </Box>

@@ -249,7 +249,7 @@ const MainForm = ({
         <Box
           sx={{
             width: "100%",
-            height: "100%",
+            // height: "100%",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-start",
@@ -1736,7 +1736,7 @@ const MainForm = ({
         <Box
           sx={{
             width: "100%",
-            height: "100%",
+            // height: "100%",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-start",
@@ -2855,7 +2855,7 @@ const MainForm = ({
         <Box
           sx={{
             width: "100%",
-            height: "100%",
+            // height: "100%",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-start",
