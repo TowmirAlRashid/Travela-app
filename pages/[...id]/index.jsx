@@ -46,6 +46,7 @@ export default function Home({ countries, primaryContact, otherContacts }) {
         );
 
         if (result?.data?.status === 200) {
+          setPassengerSelected(primaryContact);
           setPassengers(
             passengers?.filter(
               (singlePassenger) => singlePassenger?.id !== passenger?.id

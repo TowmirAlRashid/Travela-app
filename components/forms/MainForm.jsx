@@ -34,7 +34,6 @@ const MainForm = ({
   navElementSelected,
   setNavElementSelected,
   countries,
-  setPassengerSelected,
   currentOccasions,
   setCurrentOccasions,
   currentPrograms,
@@ -171,7 +170,7 @@ const MainForm = ({
         updatedField: submitData,
       };
       const result = await axios.post("/api/zoho/updateRecord", recordObject);
-      console.log(result);
+      console.log({ updateRecord: result });
 
       if (result.data?.status === 200) {
         setMessage(result?.data?.message);
@@ -179,29 +178,31 @@ const MainForm = ({
         setIsLoading(false);
       }
     } catch (error) {
-      // setMessage(result.data?.message);
       handleClickOpen();
       setIsLoading(false);
     }
 
-    // if (attachments?.length > 0) {
-    //   const formData = new FormData();
-    //   formData.append("file", attachments?.[0]);
-    //   formData.append("id", passengerSelected?.id);
+    if (attachments?.length > 0) {
+      const formData = new FormData();
+      formData.append("file", attachments?.[0]);
+      formData.append("id", passengerSelected?.id);
 
-    //   try {
-    //     console.log(formData);
-    //     let res = await axios.post("/api/uploadfile", formData);
-    //     console.log({ res });
-    //     if (res?.data?.status === 200) {
-    //       console.log(res);
-    //     }
-    //   } catch (error) {
-    //     alert(error);
-    //   }
-    // }
+      console.log(attachments);
 
-    console.log(submitData);
+      try {
+        console.log(formData);
+        let res = await axios.post("/api/zoho/uploadfile", formData);
+        console.log({ uploadAttachments: res });
+        if (res?.data?.status === 200) {
+          console.log(res);
+          setAttachments([]);
+        }
+      } catch (error) {
+        alert(error);
+      }
+    }
+
+    // console.log(submitData);
   };
 
   return (
