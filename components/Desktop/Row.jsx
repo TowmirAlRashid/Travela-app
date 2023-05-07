@@ -43,7 +43,7 @@ const Row = ({
     >
       <Typography
         sx={{
-          width: "40%",
+          width: "60%",
           fontSize: "14px",
           color: `${passengerSelected?.id === data?.id ? "white" : "black"}`,
         }}
@@ -53,7 +53,7 @@ const Row = ({
 
       <Typography
         sx={{
-          width: "40%",
+          width: "20%",
           fontSize: "14px",
           color: `${passengerSelected?.id === data?.id ? "white" : "black"}`,
         }}

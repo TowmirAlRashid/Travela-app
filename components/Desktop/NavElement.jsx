@@ -14,7 +14,12 @@ const NavElement = ({ label, navElementSelected, setNavElementSelected }) => {
         display: "flex",
         justifyContent: "flex-start",
         alignItems: "center",
-        pl: "1rem",
+        pl: {
+          xs: 0,
+          sm: 0,
+          md: "0.4rem",
+          lg: "1rem",
+        },
         backgroundColor: `${
           navElementSelected === label ? "#fafafb" : "transparent"
         }`,
@@ -25,7 +30,10 @@ const NavElement = ({ label, navElementSelected, setNavElementSelected }) => {
         sx={{
           color: `${navElementSelected === label ? "red" : "black"}`,
           fontWeight: "bold",
-          fontSize: "14px",
+          fontSize: {
+            lg: "14px",
+            md: "12px",
+          },
         }}
       >
         {label}
