@@ -273,6 +273,30 @@ const MainForm = ({
           >
             <Box
               sx={{
+                width: {
+                  lg: "94%",
+                  md: "94%",
+                  sm: "100%",
+                  xs: "100%",
+                },
+                mb: "1rem",
+                backgroundColor: "#fff3cd",
+                p: "0.8rem",
+                borderRadius: "4px",
+              }}
+            >
+              <Typography mb={2}>
+                ◾ Please provide travelers details below using the secure and
+                online form to help protect your private information.
+              </Typography>
+              <Typography>
+                ◾ Names have to match government issued passport and IDs to
+                avoid issues during travel.
+              </Typography>
+            </Box>
+
+            <Box
+              sx={{
                 width: "100%",
                 display: "flex",
                 alignItems: "center",
@@ -530,30 +554,6 @@ const MainForm = ({
                   );
                 }}
               />
-            </Box>
-
-            <Box
-              sx={{
-                width: {
-                  lg: "94%",
-                  md: "94%",
-                  sm: "100%",
-                  xs: "100%",
-                },
-                mt: "1rem",
-                backgroundColor: "#fff3cd",
-                p: "0.8rem",
-                borderRadius: "4px",
-              }}
-            >
-              <Typography mb={2}>
-                ◾ Please provide travelers details below using the secure and
-                encrypted online form to help protect your private information.
-              </Typography>
-              <Typography>
-                ◾ Names have to match government issued passport and IDs to
-                avoid issues during travel.
-              </Typography>
             </Box>
           </Box>
 

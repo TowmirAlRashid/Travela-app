@@ -201,7 +201,7 @@ const AddPassenger = ({
           <Controller
             control={control}
             name="Middle_Name"
-            rules={{ required: true }}
+            // rules={{ required: true }}
             render={({ field }) => (
               <TextField
                 inputProps={{
@@ -217,7 +217,7 @@ const AddPassenger = ({
                   mb: "1rem",
                   width: "100%",
                 }}
-                error={errors["Middle_Name"]}
+                // error={errors["Middle_Name"]}
                 label="Middle Name"
                 // InputLabelProps={{ shrink: true }}
               />
@@ -253,12 +253,13 @@ const AddPassenger = ({
           <Controller
             name="Type"
             control={control}
+            rules={{ required: true }}
             render={({ field }) => {
               return (
                 <Autocomplete
                   {...field}
                   disablePortal
-                  options={["Adult", "Children", "Infant"]}
+                  options={["Adult", "Child", "Infant"]}
                   getOptionLabel={(option) => option}
                   onChange={(_, data) => {
                     field.onChange(data);
@@ -274,6 +275,7 @@ const AddPassenger = ({
                   renderInput={(params) => (
                     <TextField
                       {...params}
+                      error={errors["Type"]}
                       label="Type"
                       // InputLabelProps={{ shrink: true }}
                     />
