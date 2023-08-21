@@ -47,7 +47,7 @@ const AddPassenger = ({
       First_Name: data?.First_Name,
       Middle_Name: data?.Middle_Name,
       Last_Name: data?.Last_Name,
-      Type: data?.Type,
+      Type: data?.Type === "Child" ? "Children" : data?.Type,
       Associated_with: primaryContactId,
     };
     // console.log(submitData);

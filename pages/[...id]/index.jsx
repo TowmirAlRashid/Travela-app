@@ -34,7 +34,7 @@ export default function Home({ countries, primaryContact, otherContacts }) {
   const handleDeletePassenger = async (passenger) => {
     // deletes a passenger if priority not high
     try {
-      if (passenger?.Full_Name !== primaryContact?.Full_Name) {
+      if (passenger?.id !== primaryContact?.id) {
         const recordObject = {
           id: passengerSelected?.id,
           moduleName: "Contacts",

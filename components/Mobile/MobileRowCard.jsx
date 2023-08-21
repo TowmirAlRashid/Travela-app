@@ -104,7 +104,7 @@ const MobileRowCard = ({
             mb: "1rem",
           }}
         >
-          {data?.Type}
+          {data?.Type === "Children" ? "Child" : data?.Type}
         </Typography>
 
         <Box

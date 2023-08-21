@@ -58,7 +58,7 @@ const Row = ({
           color: `${passengerSelected?.id === data?.id ? "white" : "black"}`,
         }}
       >
-        {data?.Type}
+        {data?.Type === "Children" ? "Child" : data?.Type}
       </Typography>
 
       {hovered && (
