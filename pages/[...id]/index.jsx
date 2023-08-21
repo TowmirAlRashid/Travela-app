@@ -304,6 +304,7 @@ export default function Home({ countries, primaryContact, otherContacts }) {
                         setCurrentOccasions={setCurrentOccasions}
                         currentPrograms={currentPrograms}
                         setCurrentPrograms={setCurrentPrograms}
+                        primaryContact={primaryContact}
                       />
                     );
                   })}
@@ -424,6 +425,7 @@ export default function Home({ countries, primaryContact, otherContacts }) {
                     setCurrentOccasions={setCurrentOccasions}
                     currentPrograms={currentPrograms}
                     setCurrentPrograms={setCurrentPrograms}
+                    primaryContact={primaryContact}
                   />
                 </Box>
               </Box>

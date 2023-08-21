@@ -19,6 +19,7 @@ const MobileRowCard = ({
   setCurrentOccasions,
   currentPrograms,
   setCurrentPrograms,
+  primaryContact,
 }) => {
   return (
     <Box
@@ -146,6 +147,7 @@ const MobileRowCard = ({
             setCurrentOccasions={setCurrentOccasions}
             currentPrograms={currentPrograms}
             setCurrentPrograms={setCurrentPrograms}
+            primaryContact={primaryContact}
           />
         </Box>
       )}

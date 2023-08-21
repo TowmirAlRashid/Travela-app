@@ -38,6 +38,7 @@ const MainForm = ({
   setCurrentOccasions,
   currentPrograms,
   setCurrentPrograms,
+  primaryContact,
 }) => {
   const [attachments, setAttachments] = useState([]);
   const [test, setTest] = useState();
@@ -64,7 +65,7 @@ const MainForm = ({
     defaultValues: passengerSelected || {},
   });
 
-  // console.log(passengerSelected);
+  console.log(primaryContact);
 
   useEffect(() => {
     reset({ data: "test" });
@@ -808,6 +809,7 @@ const MainForm = ({
                 render={({ field }) => (
                   <TextField
                     InputLabelProps={{ shrink: true }}
+                    disabled={primaryContact?.id === passengerSelected?.id}
                     inputProps={{
                       style: {
                         padding: "12px 8px",
@@ -880,6 +882,7 @@ const MainForm = ({
                   render={({ field }) => (
                     <TextField
                       InputLabelProps={{ shrink: true }}
+                      disabled={primaryContact?.id === passengerSelected?.id}
                       inputProps={{
                         style: {
                           padding: "12px 8px",
